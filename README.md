@@ -1,0 +1,19 @@
+# Calculator
+
+A simple browser calculator built to practice Git.
+
+Each operation is developed on its own feature branch and merged into `main`.
+
+## How to run
+
+Open `index.html` in a browser.
+
+## Features
+
+- [x] Number input
+- [ ] Addition (`feature/addition`)
+- [ ] Subtraction (`feature/subtraction`)
+- [ ] Multiplication (`feature/multiplication`)
+- [ ] Division (`feature/division`)
+- [ ] Clear (`feature/clear`)
+- [ ] Decimal numbers (`feature/decimal`)
