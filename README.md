@@ -11,7 +11,7 @@ Open `index.html` in a browser.
 ## Features
 
 - [x] Number input
-- [ ] Addition (`feature/addition`)
+- [x] Addition (`feature/addition`)
 - [ ] Subtraction (`feature/subtraction`)
 - [ ] Multiplication (`feature/multiplication`)
 - [ ] Division (`feature/division`)
