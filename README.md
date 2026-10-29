@@ -12,7 +12,7 @@ Open `index.html` in a browser.
 
 - [x] Number input
 - [x] Addition (`feature/addition`)
-- [ ] Subtraction (`feature/subtraction`)
+- [x] Subtraction (`feature/subtraction`)
 - [ ] Multiplication (`feature/multiplication`)
 - [ ] Division (`feature/division`)
 - [ ] Clear (`feature/clear`)
