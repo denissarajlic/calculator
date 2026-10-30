@@ -102,6 +102,15 @@ function equals() {
   updateDisplay();
 }
 
+function clear() {
+  currentInput = "0";
+  firstNumber = null;
+  operator = null;
+  waitingForSecondNumber = false;
+  highlightOperator(null);
+  updateDisplay();
+}
+
 document.querySelectorAll(".number").forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.dataset.value));
 });
@@ -111,5 +120,6 @@ operatorButtons.forEach((button) => {
 });
 
 document.getElementById("equals").addEventListener("click", equals);
+document.getElementById("clear").addEventListener("click", clear);
 
 updateDisplay();
