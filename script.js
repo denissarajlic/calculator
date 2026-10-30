@@ -42,6 +42,22 @@ function appendNumber(number) {
   updateDisplay();
 }
 
+function appendDecimal() {
+  if (waitingForSecondNumber) {
+    currentInput = "0.";
+    waitingForSecondNumber = false;
+    highlightOperator(null);
+  } else if (!currentInput.includes(".")) {
+    currentInput += ".";
+  }
+  updateDisplay();
+}
+
+// Rounds away floating point noise, e.g. 0.1 + 0.2 = 0.30000000000000004
+function formatResult(number) {
+  return String(parseFloat(number.toFixed(10)));
+}
+
 function calculate(a, b, op) {
   switch (op) {
     case "+":
@@ -75,7 +91,8 @@ function chooseOperator(op) {
       showError();
       return;
     }
-    currentInput = String(firstNumber);
+    currentInput = formatResult(firstNumber);
+    firstNumber = parseFloat(currentInput);
   } else {
     firstNumber = value;
   }
@@ -94,7 +111,7 @@ function equals() {
     showError();
     return;
   }
-  currentInput = String(result);
+  currentInput = formatResult(result);
   firstNumber = null;
   operator = null;
   waitingForSecondNumber = true;
@@ -121,5 +138,6 @@ operatorButtons.forEach((button) => {
 
 document.getElementById("equals").addEventListener("click", equals);
 document.getElementById("clear").addEventListener("click", clear);
+document.getElementById("decimal").addEventListener("click", appendDecimal);
 
 updateDisplay();

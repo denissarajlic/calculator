@@ -79,7 +79,7 @@ button:hover {
 
 .equals {
   background: #27ae60;
-  grid-column: span 4;
+  grid-column: span 3;
 }
 
 .equals:hover {

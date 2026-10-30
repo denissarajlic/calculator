@@ -17,4 +17,4 @@ Open `index.html` in a browser.
 - [x] Expression display and operator highlight (`feature/expression-display`)
 - [x] Division (`feature/division`)
 - [x] Clear (`feature/clear`)
-- [ ] Decimal numbers (`feature/decimal`)
+- [x] Decimal numbers (`feature/decimal`)
