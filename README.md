@@ -19,3 +19,4 @@ Open `index.html` in a browser.
 - [x] Clear (`feature/clear`)
 - [x] Decimal numbers (`feature/decimal`)
 - [x] Backspace (`feature/backspace`)
+- [x] Square root and power (`feature/sqrt-power`)
