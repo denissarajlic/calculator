@@ -21,3 +21,4 @@ Open `index.html` in a browser.
 - [x] Backspace (`feature/backspace`)
 - [x] Percent and +/- (`feature/percent-sign`)
 - [x] Square root and power (`feature/sqrt-power`)
+- [x] Keyboard support (`feature/keyboard`)

@@ -193,4 +193,25 @@ document.getElementById("backspace").addEventListener("click", backspace);
 document.getElementById("sqrt").addEventListener("click", squareRoot);
 document.getElementById("square").addEventListener("click", square);
 
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+
+  if (key >= "0" && key <= "9") {
+    appendNumber(key);
+  } else if (key in operatorSymbols) {
+    chooseOperator(key);
+  } else if (key === "." || key === ",") {
+    appendDecimal();
+  } else if (key === "Enter" || key === "=") {
+    event.preventDefault();
+    equals();
+  } else if (key === "Backspace") {
+    backspace();
+  } else if (key === "Escape") {
+    clear();
+  } else if (key === "%") {
+    percent();
+  }
+});
+
 updateDisplay();
