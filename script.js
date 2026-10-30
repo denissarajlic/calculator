@@ -119,6 +119,24 @@ function equals() {
   updateDisplay();
 }
 
+function percent() {
+  if (waitingForSecondNumber) return;
+
+  currentInput = formatResult(parseFloat(currentInput) / 100);
+  updateDisplay();
+}
+
+function toggleSign() {
+  if (waitingForSecondNumber || currentInput === "0") return;
+
+  if (currentInput.startsWith("-")) {
+    currentInput = currentInput.slice(1);
+  } else {
+    currentInput = "-" + currentInput;
+  }
+  updateDisplay();
+}
+
 function clear() {
   currentInput = "0";
   firstNumber = null;
@@ -147,6 +165,8 @@ operatorButtons.forEach((button) => {
 });
 
 document.getElementById("equals").addEventListener("click", equals);
+document.getElementById("percent").addEventListener("click", percent);
+document.getElementById("sign").addEventListener("click", toggleSign);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("decimal").addEventListener("click", appendDecimal);
 document.getElementById("backspace").addEventListener("click", backspace);
