@@ -20,3 +20,4 @@ Open `index.html` in a browser.
 - [x] Decimal numbers (`feature/decimal`)
 - [x] Backspace (`feature/backspace`)
 - [x] Percent and +/- (`feature/percent-sign`)
+- [x] Square root and power (`feature/sqrt-power`)

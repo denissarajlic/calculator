@@ -156,6 +156,26 @@ function backspace() {
   updateDisplay();
 }
 
+function squareRoot() {
+  if (waitingForSecondNumber) return;
+
+  const value = parseFloat(currentInput);
+  if (value < 0) {
+    showError();
+    return;
+  }
+  currentInput = formatResult(Math.sqrt(value));
+  updateDisplay();
+}
+
+function square() {
+  if (waitingForSecondNumber) return;
+
+  const value = parseFloat(currentInput);
+  currentInput = formatResult(value * value);
+  updateDisplay();
+}
+
 document.querySelectorAll(".number").forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.dataset.value));
 });
@@ -170,5 +190,7 @@ document.getElementById("sign").addEventListener("click", toggleSign);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("decimal").addEventListener("click", appendDecimal);
 document.getElementById("backspace").addEventListener("click", backspace);
+document.getElementById("sqrt").addEventListener("click", squareRoot);
+document.getElementById("square").addEventListener("click", square);
 
 updateDisplay();
