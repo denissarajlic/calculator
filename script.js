@@ -27,6 +27,8 @@ function calculate(a, b, op) {
       return a + b;
     case "-":
       return a - b;
+    case "*":
+      return a * b;
     default:
       return b;
   }
