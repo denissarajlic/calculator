@@ -15,6 +15,6 @@ Open `index.html` in a browser.
 - [x] Subtraction (`feature/subtraction`)
 - [x] Multiplication (`feature/multiplication`)
 - [x] Expression display and operator highlight (`feature/expression-display`)
-- [ ] Division (`feature/division`)
+- [x] Division (`feature/division`)
 - [ ] Clear (`feature/clear`)
 - [ ] Decimal numbers (`feature/decimal`)

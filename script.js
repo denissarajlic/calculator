@@ -5,6 +5,7 @@ const operatorSymbols = {
   "+": "+",
   "-": "-",
   "*": "×",
+  "/": "÷",
 };
 
 let currentInput = "0";
@@ -49,9 +50,20 @@ function calculate(a, b, op) {
       return a - b;
     case "*":
       return a * b;
+    case "/":
+      return b === 0 ? null : a / b;
     default:
       return b;
   }
+}
+
+function showError() {
+  currentInput = "0";
+  firstNumber = null;
+  operator = null;
+  waitingForSecondNumber = true;
+  highlightOperator(null);
+  display.textContent = "Error";
 }
 
 function chooseOperator(op) {
@@ -59,6 +71,10 @@ function chooseOperator(op) {
 
   if (operator !== null && !waitingForSecondNumber) {
     firstNumber = calculate(firstNumber, value, operator);
+    if (firstNumber === null) {
+      showError();
+      return;
+    }
     currentInput = String(firstNumber);
   } else {
     firstNumber = value;
@@ -74,6 +90,10 @@ function equals() {
   if (operator === null || waitingForSecondNumber) return;
 
   const result = calculate(firstNumber, parseFloat(currentInput), operator);
+  if (result === null) {
+    showError();
+    return;
+  }
   currentInput = String(result);
   firstNumber = null;
   operator = null;
