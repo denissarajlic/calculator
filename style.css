@@ -64,6 +64,11 @@ button:hover {
   background: #f5ab35;
 }
 
+.operator.active {
+  background: #fff;
+  color: #f39c12;
+}
+
 .equals {
   background: #27ae60;
   grid-column: span 4;

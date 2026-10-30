@@ -1,4 +1,11 @@
 const display = document.getElementById("display");
+const operatorButtons = document.querySelectorAll(".operator");
+
+const operatorSymbols = {
+  "+": "+",
+  "-": "-",
+  "*": "×",
+};
 
 let currentInput = "0";
 let firstNumber = null;
@@ -6,13 +13,26 @@ let operator = null;
 let waitingForSecondNumber = false;
 
 function updateDisplay() {
-  display.textContent = currentInput;
+  if (operator === null) {
+    display.textContent = currentInput;
+    return;
+  }
+
+  const secondPart = waitingForSecondNumber ? "" : currentInput;
+  display.textContent = firstNumber + operatorSymbols[operator] + secondPart;
+}
+
+function highlightOperator(op) {
+  operatorButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.operator === op);
+  });
 }
 
 function appendNumber(number) {
   if (waitingForSecondNumber) {
     currentInput = number;
     waitingForSecondNumber = false;
+    highlightOperator(null);
   } else if (currentInput === "0") {
     currentInput = number;
   } else {
@@ -40,13 +60,14 @@ function chooseOperator(op) {
   if (operator !== null && !waitingForSecondNumber) {
     firstNumber = calculate(firstNumber, value, operator);
     currentInput = String(firstNumber);
-    updateDisplay();
   } else {
     firstNumber = value;
   }
 
   operator = op;
   waitingForSecondNumber = true;
+  highlightOperator(op);
+  updateDisplay();
 }
 
 function equals() {
@@ -57,6 +78,7 @@ function equals() {
   firstNumber = null;
   operator = null;
   waitingForSecondNumber = true;
+  highlightOperator(null);
   updateDisplay();
 }
 
@@ -64,7 +86,7 @@ document.querySelectorAll(".number").forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.dataset.value));
 });
 
-document.querySelectorAll(".operator").forEach((button) => {
+operatorButtons.forEach((button) => {
   button.addEventListener("click", () => chooseOperator(button.dataset.operator));
 });
 
