@@ -18,3 +18,4 @@ Open `index.html` in a browser.
 - [x] Division (`feature/division`)
 - [x] Clear (`feature/clear`)
 - [x] Decimal numbers (`feature/decimal`)
+- [x] Backspace (`feature/backspace`)

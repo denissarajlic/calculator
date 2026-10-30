@@ -128,6 +128,16 @@ function clear() {
   updateDisplay();
 }
 
+function backspace() {
+  if (waitingForSecondNumber) return;
+
+  currentInput = currentInput.slice(0, -1);
+  if (currentInput === "" || currentInput === "-") {
+    currentInput = "0";
+  }
+  updateDisplay();
+}
+
 document.querySelectorAll(".number").forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.dataset.value));
 });
@@ -139,5 +149,6 @@ operatorButtons.forEach((button) => {
 document.getElementById("equals").addEventListener("click", equals);
 document.getElementById("clear").addEventListener("click", clear);
 document.getElementById("decimal").addEventListener("click", appendDecimal);
+document.getElementById("backspace").addEventListener("click", backspace);
 
 updateDisplay();
