@@ -1,5 +1,6 @@
 const display = document.getElementById("display");
 const operatorButtons = document.querySelectorAll(".operator");
+const historyList = document.getElementById("history-list");
 
 const operatorSymbols = {
   "+": "+",
@@ -103,15 +104,27 @@ function chooseOperator(op) {
   updateDisplay();
 }
 
+function addToHistory(expression, result) {
+  const item = document.createElement("li");
+  item.textContent = expression + " = " + result;
+  historyList.prepend(item);
+}
+
+function clearHistory() {
+  historyList.innerHTML = "";
+}
+
 function equals() {
   if (operator === null || waitingForSecondNumber) return;
 
+  const expression = display.textContent;
   const result = calculate(firstNumber, parseFloat(currentInput), operator);
   if (result === null) {
     showError();
     return;
   }
   currentInput = formatResult(result);
+  addToHistory(expression, currentInput);
   firstNumber = null;
   operator = null;
   waitingForSecondNumber = true;
@@ -165,6 +178,7 @@ function squareRoot() {
     return;
   }
   currentInput = formatResult(Math.sqrt(value));
+  if (operator === null) addToHistory("√" + value, currentInput);
   updateDisplay();
 }
 
@@ -173,6 +187,7 @@ function square() {
 
   const value = parseFloat(currentInput);
   currentInput = formatResult(value * value);
+  if (operator === null) addToHistory(value + "²", currentInput);
   updateDisplay();
 }
 
@@ -192,6 +207,7 @@ document.getElementById("decimal").addEventListener("click", appendDecimal);
 document.getElementById("backspace").addEventListener("click", backspace);
 document.getElementById("sqrt").addEventListener("click", squareRoot);
 document.getElementById("square").addEventListener("click", square);
+document.getElementById("clear-history").addEventListener("click", clearHistory);
 
 document.addEventListener("keydown", (event) => {
   const key = event.key;

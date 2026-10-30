@@ -93,3 +93,34 @@ button:hover {
 .equals:hover {
   background: #2ecc71;
 }
+
+.history {
+  margin-top: 15px;
+  border-top: 1px solid #555;
+  padding-top: 10px;
+  color: #ccc;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.clear-history {
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+.history-list {
+  list-style: none;
+  max-height: 150px;
+  overflow-y: auto;
+  text-align: right;
+}
+
+.history-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid #444;
+}
